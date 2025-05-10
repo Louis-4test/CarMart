@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarMart Cameroon - Home</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo">
+            <h1>CarMart Cameroon</h1>
+            <img src="images/logo.png" alt="CarMart Logo" />
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="cars/cars.html">Available Cars</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Search Input Below Navbar -->
+    <div style="text-align: right; margin-top: 10px;">
+        <input type="text" id="searchInput" placeholder="Search for cars..." />
+    </div>
+
+    <!-- Main Content Section -->
+    <main>
+        <!-- About Section -->
+        <section id="about">
+            <h2>CarMart Cameroon</h2>
+            <p>Welcome to CarMart Cameroon, your digital marketplace for buying and selling cars in Cameroon.
+                Our user-friendly platform simplifies the car-buying experience, making it easy for buyers to
+                explore various vehicle options and for sellers to connect with potential buyers.</p>
+        </section>
+
+        <!-- Available Cars Section -->
+        <section id="cars">
+            <h2>Available Cars</h2>
+            <div class="car-list" id="carList">
+                <!-- Car items will be dynamically generated here -->
+            </div>
+        </section>
+
+        <!-- Customer Feedback Submission Form -->
+        <div id="submitFeedbackForm" class="form-container">
+            <h3>Submit Feedback</h3>
+            <form id="newFeedbackForm">
+                <label for="customerName">Your Name:</label>
+                <input type="text" id="customerName" required>
+
+                <label for="feedbackText">Your Feedback:</label>
+                <textarea id="feedbackText" required></textarea>
+
+                <button type="submit" class="btn">Submit Feedback</button>
+            </form>
+        </div>
+        
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <p>If you have any questions, feel free to <a href="mailto:fola.louis@gmail.com">contact us</a>.</p>
+        </section>
+    </main>
+
+        <!-- Footer Section -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2023 CarMart Cameroon. All rights reserved.</p>
+            <nav>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="terms.html">Terms and Conditions</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
+            <div class="social-media">
+                <a href="https://www.facebook.com" target="_blank" aria-label="Facebook"><img src="fonts/facebook-app-symbol.png" alt="Facebook" /></a>
+                <a href="https://www.twitter.com" target="_blank" aria-label="Twitter"><img src="fonts/twitter.png" alt="Twitter" /></a>
+                <a href="https://www.instagram.com" target="_blank" aria-label="Instagram"><img src="fonts/instagram.png" alt="Instagram" /></a>
+                <a href="https://www.linkedin.com" target="_blank" aria-label="LinkedIn"><img src="fonts/linkedin.png" alt="LinkedIn" /></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <script src="js/main.js"></script>
+    <script>
+        const cars = [
+            { model: "Toyota Land Cruiser LC 300 ZX 3.3 V6 diesel", price: "75,000,000XAF", image: "images/car1.jpg", detailsPage: "cars/car1.html" },
+            { model: "Toyota RAV4 SUV (2.0 VVT-i petrol, 2.0 D-4D, 2.5 Hybrid)", price: "25,000,000XAF", image: "images/car2.jpg", detailsPage: "cars/car2.html" },
+            { model: "Mercedes-Benz A Class", price: "15,000,000XAF", image: "images/car3.jpg", detailsPage: "cars/car3.html" },
+            { model: "KIA Sportage 2.0 CRDi GT Line 4x4", price: "32,000,000XAF", image: "images/car4.jpg", detailsPage: "cars/car4.html" },
+            { model: "SUZUKI SX4 Crossover", price: "58,000,000XAF", image: "images/car5.jpg", detailsPage: "cars/car5.html" },
+            { model: "BMW 3 Series Gran Limousine", price: "89,000,000XAF", image: "images/car6.png", detailsPage: "cars/car6.html" },
+            // Add more car objects as needed
+        ];
+
+        const carList = document.getElementById('carList');
+        const searchInput = document.getElementById('searchInput');
+
+        function displayCars(data) {
+            carList.innerHTML = ''; // Clear previous listings
+            data.forEach(car => {
+                const carItem = document.createElement('div');
+                carItem.className = 'car-item';
+                carItem.innerHTML = `
+                    <img src="${car.image}" alt="${car.model}">
+                    <div class="details"> <!-- New div for details -->
+                        <h3>${car.model}</h3>
+                        <p><strong>Price:</strong> ${car.price}</p>
+                        <a href="${car.detailsPage}" class="btn">View Details</a>
+                    </div>
+                `;
+                carList.appendChild(carItem);
+            });
+        }
+
+        // Initial display of all cars
+        displayCars(cars);
+
+        // Search functionality
+        searchInput.addEventListener('input', function() {
+            const searchTerm = searchInput.value.toLowerCase();
+            const filteredCars = cars.filter(car => car.model.toLowerCase().includes(searchTerm));
+            displayCars(filteredCars);
+        });
+    </script>
+</body>
+
+</html>

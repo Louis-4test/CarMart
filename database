@@ -1,0 +1,62 @@
+-- Create Database
+CREATE DATABASE CarMartDB;
+
+-- Use the database
+USE CarMartDB;
+
+-- Create Users Table
+CREATE TABLE Users (
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    role ENUM('admin', 'user') DEFAULT 'user',
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Create Cars Table
+CREATE TABLE Cars (
+    car_id INT AUTO_INCREMENT PRIMARY KEY,
+    model VARCHAR(100) NOT NULL,
+    make VARCHAR(100) NOT NULL,
+    year YEAR NOT NULL,
+    mileage INT,
+    price DECIMAL(10, 2) NOT NULL,
+    description TEXT,
+    image_url VARCHAR(255),
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+-- Create Categories Table (Optional)
+CREATE TABLE Categories (
+    category_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL UNIQUE
+);
+
+-- Create Car Categories Table (Optional)
+CREATE TABLE CarCategories (
+    car_id INT,
+    category_id INT,
+    PRIMARY KEY (car_id, category_id),
+    FOREIGN KEY (car_id) REFERENCES Cars(car_id) ON DELETE CASCADE,
+    FOREIGN KEY (category_id) REFERENCES Categories(category_id) ON DELETE CASCADE
+);
+
+--Creating feedback table
+CREATE TABLE feedback (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    customer_name VARCHAR(255) NOT NULL,
+    feedback_text TEXT NOT NULL,
+    feedback_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+--Creating traffic table
+CREATE TABLE traffic (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    visitors_today INT DEFAULT 0,
+    visitors_this_month INT DEFAULT 0,
+    total_visitors INT DEFAULT 0
+);
+--initialising the traffic to 0, 0, 0
+INSERT INTO traffic (visitors_today, visitors_this_month, total_visitors) VALUES (0, 0, 0);

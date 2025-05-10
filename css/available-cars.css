@@ -1,0 +1,49 @@
+/* Add this to css/styles.css */
+
+/* Available Cars Section Styles */
+#available-cars {
+    margin-top: 20px;
+}
+
+.car-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    padding: 10px;
+    transition: box-shadow 0.3s;
+}
+
+.car-item:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Ensure images scale correctly */
+.car-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+/* Additional spacing for car details */
+.car-item p {
+    margin: 5px 0;
+}
+
+/* Button styles */
+.btn {
+    background: #0077cc;
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.btn:hover {
+    background: #005fa3;
+}

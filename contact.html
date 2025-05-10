@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/contact.css">
+    <title>Contact Us - CarMart Cameroon</title>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo">
+            <h1>CarMart Cameroon</h1>
+            <img src="images/logo.png" alt="CarMart Logo" />
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="./cars/cars.html">Available Cars</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Contact Us</h1>
+        <p>If you have any questions or need assistance, feel free to reach out to us. We’re here to help!</p>
+
+        <section class="contact-info">
+            <h2>Get in Touch</h2>
+            <p><strong>Email:</strong> fola.louis@gmail.com</p>
+            <p><strong>Phone:</strong> +237 679 455 965</p>
+            <p><strong>Address:</strong> 123 CarMart St, Yaoundé, Cameroon</p>
+        </section>
+
+        <section class="contact-form">
+            <h2>Contact Form</h2>
+            <form action="submit_form.php" method="POST">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+                
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
+    </main>
+
+     <!-- Footer Section -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2023 CarMart Cameroon. All rights reserved.</p>
+            <nav>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="terms.html">Terms and Conditions</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
+            <div class="social-media">
+                <a href="https://www.facebook.com" target="_blank" aria-label="Facebook"><img src="fonts/facebook-app-symbol.png" alt="Facebook" /></a>
+                <a href="https://www.twitter.com" target="_blank" aria-label="Twitter"><img src="fonts/twitter.png" alt="Twitter" /></a>
+                <a href="https://www.instagram.com" target="_blank" aria-label="Instagram"><img src="fonts/instagram.png" alt="Instagram" /></a>
+                <a href="https://www.linkedin.com" target="_blank" aria-label="LinkedIn"><img src="fonts/linkedin.png" alt="LinkedIn" /></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

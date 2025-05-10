@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - CarMart Cameroon</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo">
+            <h1>CarMart Admin</h1>
+            <img src="images/logo.png" alt="CarMart Logo" />
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="available-cars.html">Available Cars</a></li>
+                <li><a href="#" class="active">Admin Dashboard</a></li>
+                <li><a href="#logout">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content Section -->
+    <main>
+        <section id="dashboard">
+            <h2>Admin Dashboard</h2>
+            <div class="dashboard-options">
+                <button id="addCarBtn" class="btn">Add New Car</button>
+                <button id="updateCarBtn" class="btn">Update Car Details</button>
+                <button id="deleteCarBtn" class="btn">Delete Car</button>
+            </div>
+
+            <!-- Manage Listings -->
+            <div id="manageListings" class="form-container">
+                <h3>Manage Listings</h3>
+                <!-- Add New Car Form -->
+                <div id="addCarForm" style="display: block;">
+                    <h4>Add New Car</h4>
+                    <form id="newCarForm">
+                        <label for="carModel">Car Model:</label>
+                        <input type="text" id="carModel" required>
+
+                        <label for="carPrice">Price:</label>
+                        <input type="number" id="carPrice" required>
+
+                        <label for="carYear">Year:</label>
+                        <input type="number" id="carYear" required>
+
+                        <label for="carMileage">Mileage:</label>
+                        <input type="number" id="carMileage" required>
+
+                        <label for="carDescription">Description:</label>
+                        <textarea id="carDescription" required></textarea>
+
+                        <label for="carImage">Image URL:</label>
+                        <input type="url" id="carImage" required>
+
+                        <button type="submit" class="btn">Add Car</button>
+                    </form>
+                </div>
+
+                <!-- Update Car Form -->
+                <div id="updateCarForm" style="display: none;">
+                    <h4>Update Car Details</h4>
+                    <form id="updateCarDetailsForm">
+                        <label for="carIdToUpdate">Car ID:</label>
+                        <input type="text" id="carIdToUpdate" required>
+
+                        <label for="updatedCarModel">New Car Model:</label>
+                        <input type="text" id="updatedCarModel">
+
+                        <label for="updatedCarPrice">New Price:</label>
+                        <input type="number" id="updatedCarPrice">
+
+                        <label for="updatedCarYear">New Year:</label>
+                        <input type="number" id="updatedCarYear">
+
+                        <label for="updatedCarMileage">New Mileage:</label>
+                        <input type="number" id="updatedCarMileage">
+
+                        <label for="updatedCarDescription">New Description:</label>
+                        <textarea id="updatedCarDescription"></textarea>
+
+                        <button type="submit" class="btn">Update Car</button>
+                    </form>
+                </div>
+
+                <!-- Delete Car Form -->
+                <div id="deleteCarForm" style="display: none;">
+                    <h4>Delete Car</h4>
+                    <form id="deleteCarDetailsForm">
+                        <label for="carIdToDelete">Car ID:</label>
+                        <input type="text" id="carIdToDelete" required>
+                        <button type="submit" class="btn">Delete Car</button>
+                    </form>
+                </div>
+
+                <!-- Feedback Message -->
+                <div id="feedbackMessage" style="margin-top: 20px;"></div>
+            </div>
+
+            <!-- Monitor Traffic Section -->
+            <div id="monitorTraffic" class="form-container">
+                <h3>Monitor Traffic</h3>
+                <div id="trafficStatistics">
+                    <p>Total Visitors: <span id="totalVisitors">0</span></p>
+                    <p>Daily Visitors: <span id="dailyVisitors">0</span></p>
+                    <p>Monthly Visitors: <span id="monthlyVisitors">0</span></p>
+                </div>
+
+                <!-- Canvas for Traffic Visualization -->
+                <canvas id="trafficChart" width="400" height="200" style="border:1px solid #000;"></canvas>
+            </div>
+
+            <!-- Customer Feedback Section -->
+            <div id="customerFeedback" class="form-container">
+                <h3>Customer Feedback</h3>
+                <table id="feedbackTable">
+                    <thead>
+                        <tr>
+                            <th>Customer Name</th>
+                            <th>Feedback</th>
+                            <th>Date</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Feedback will be dynamically injected here -->
+                    </tbody>
+                </table>
+                <button id="viewFeedbackBtn" class="btn">View Feedback</button>
+            </div>
+        </section>
+
+        <div id="feedbackModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <h2>Feedback Details</h2>
+                <p id="modalFeedbackText"></p>
+            </div>
+        </div>        
+
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2023 CarMart Cameroon. All rights reserved.</p>
+            <nav>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="terms.html">Terms and Conditions</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
+            <div class="social-media">
+                <a href="https://www.facebook.com" target="_blank" aria-label="Facebook"><img src="fonts/facebook-app-symbol.png" alt="Facebook" /></a>
+                <a href="https://www.twitter.com" target="_blank" aria-label="Twitter"><img src="fonts/twitter.png" alt="Twitter" /></a>
+                <a href="https://www.instagram.com" target="_blank" aria-label="Instagram"><img src="fonts/instagram.png" alt="Instagram" /></a>
+                <a href="https://www.linkedin.com" target="_blank" aria-label="LinkedIn"><img src="fonts/linkedin.png" alt="LinkedIn" /></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <script src="js/main.js"></script>
+    <script src="js/admin.js"></script>
+
+    <!-- Feedback Modal -->
+    <div id="feedbackModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" id="closeModal">&times;</span>
+            <h4>Feedback Details</h4>
+            <p id="modalCustomerName"></p>
+            <p id="modalFeedback"></p>
+            <p id="modalDate"></p>
+        </div>
+    </div>
+
+</body>
+
+</html>
